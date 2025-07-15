@@ -117,7 +117,7 @@ You can get your key from: [https://www.themoviedb.org/settings/api](https://www
 
 ### 🔍 Search & Result State
 
-![Search Screen](public/Trending_ALl.png)
+![Search Screen](public/Trending_All.png)
 
 ---
 
