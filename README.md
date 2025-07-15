@@ -95,23 +95,26 @@ You can get your key from: [https://www.themoviedb.org/settings/api](https://www
 
 ## 🧠 Skills Demonstrated
 
-![React](https://img.shields.io/badge/React-19.1.0-61DAFB?logo=react)
+-   ⚛️ **React 19** with modern Hooks (`useEffect`, `useState`, and `react-use`)
+    ![React](https://img.shields.io/badge/React-19.1.0-61DAFB?logo=react)
 
-![TailwindCSS](https://img.shields.io/badge/Tailwind-4.1-38B2AC?logo=tailwindcss)
+-   🎨 **Tailwind CSS 4.1** for responsive, utility-first styling  
+    ![TailwindCSS](https://img.shields.io/badge/Tailwind-4.1-38B2AC?logo=tailwindcss)
 
-![Vite](https://img.shields.io/badge/Vite-7.0-646CFF?logo=vite)
+-   ⚙️ **Vite 7** for lightning-fast builds and hot reloading  
+    ![Vite](https://img.shields.io/badge/Vite-7.0-646CFF?logo=vite)
 
-![Appwrite](https://img.shields.io/badge/Appwrite-BaaS-F02E65?logo=appwrite)
+-   ☁️ **Appwrite (BaaS)** to manage cloud-hosted movie data  
+    ![Appwrite](https://img.shields.io/badge/Appwrite-BaaS-F02E65?logo=appwrite)
 
-![TMDB API](https://img.shields.io/badge/TMDB-API-0db7ed?logo=themoviedatabase)
+-   📡 **TMDB API** for trending/search movie data  
+    ![TMDB API](https://img.shields.io/badge/TMDB-API-0db7ed?logo=themoviedatabase)
 
-![ESLint](https://img.shields.io/badge/ESLint-Configured-4B32C3?logo=eslint)
+-   🧼 **ESLint** for code linting and formatting  
+    ![ESLint](https://img.shields.io/badge/ESLint-Configured-4B32C3?logo=eslint)
 
-![GitHub](https://img.shields.io/badge/GitHub-Version_Control-181717?logo=github)
-
-A sleek and responsive movie browsing web app built using React and Tailwind CSS. It allows users to explore trending movies, search for any title, and view detailed information. Powered by the TMDB API and Appwrite for cloud database integration.
-
----
+-   🛠️ **Git + GitHub** for version control and collaboration  
+    ![GitHub](https://img.shields.io/badge/GitHub-Version_Control-181717?logo=github)
 
 ## 📸 Screenshots
 
