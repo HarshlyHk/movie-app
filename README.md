@@ -95,13 +95,16 @@ You can get your key from: [https://www.themoviedb.org/settings/api](https://www
 
 ## 🧠 Skills Demonstrated
 
--   > ⚛️ React 19 with modern Hooks (including `react-use`)
--   > 🎨 Tailwind CSS for fast UI styling
--   > ⚙️ Vite for lightning-fast builds and hot reloads
--   > 📡 API integration using TMDB (Axios/fetch)
--   > ☁️ Appwrite Database (BaaS) for cloud-stored movie data
--   > 🧼 ESLint setup for code quality and best practices
--   > 🛠️ Git & GitHub for version control and collaboration
+# 🎬 Movie Explorer App
+
+![React](https://img.shields.io/badge/React-19-blue?logo=react)
+![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-4.1-brightgreen?logo=tailwindcss)
+![Vite](https://img.shields.io/badge/Vite-7-purple?logo=vite)
+![Appwrite](https://img.shields.io/badge/Appwrite-BaaS-orange?logo=appwrite)
+![ESLint](https://img.shields.io/badge/ESLint-Configured-blueviolet?logo=eslint)
+![GitHub](https://img.shields.io/badge/GitHub-Version_Control-black?logo=github)
+
+A sleek and responsive movie browsing web app built using React and Tailwind CSS. It allows users to explore trending movies, search for any title, and view detailed information. Powered by the TMDB API and Appwrite for cloud database integration.
 
 ---
 
