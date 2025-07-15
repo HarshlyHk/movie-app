@@ -95,8 +95,6 @@ You can get your key from: [https://www.themoviedb.org/settings/api](https://www
 
 ## 🧠 Skills Demonstrated
 
-# 🎬 Movie Explorer App
-
 ![React](https://img.shields.io/badge/React-19-blue?logo=react)
 ![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-4.1-brightgreen?logo=tailwindcss)
 ![Vite](https://img.shields.io/badge/Vite-7-purple?logo=vite)
