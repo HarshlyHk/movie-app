@@ -95,12 +95,19 @@ You can get your key from: [https://www.themoviedb.org/settings/api](https://www
 
 ## 🧠 Skills Demonstrated
 
-![React](https://img.shields.io/badge/React-19-blue?logo=react)
-![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-4.1-brightgreen?logo=tailwindcss)
-![Vite](https://img.shields.io/badge/Vite-7-purple?logo=vite)
-![Appwrite](https://img.shields.io/badge/Appwrite-BaaS-orange?logo=appwrite)
-![ESLint](https://img.shields.io/badge/ESLint-Configured-blueviolet?logo=eslint)
-![GitHub](https://img.shields.io/badge/GitHub-Version_Control-black?logo=github)
+![React](https://img.shields.io/badge/React-19.1.0-61DAFB?logo=react)
+
+![TailwindCSS](https://img.shields.io/badge/Tailwind-4.1-38B2AC?logo=tailwindcss)
+
+![Vite](https://img.shields.io/badge/Vite-7.0-646CFF?logo=vite)
+
+![Appwrite](https://img.shields.io/badge/Appwrite-BaaS-F02E65?logo=appwrite)
+
+![TMDB API](https://img.shields.io/badge/TMDB-API-0db7ed?logo=themoviedatabase)
+
+![ESLint](https://img.shields.io/badge/ESLint-Configured-4B32C3?logo=eslint)
+
+![GitHub](https://img.shields.io/badge/GitHub-Version_Control-181717?logo=github)
 
 A sleek and responsive movie browsing web app built using React and Tailwind CSS. It allows users to explore trending movies, search for any title, and view detailed information. Powered by the TMDB API and Appwrite for cloud database integration.
 
