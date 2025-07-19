@@ -6,6 +6,7 @@ import { getTrendingMovies, updateSearchCount } from "../appwrite.js";
 import Navbar from "../components/Navbar";
 import HeroSection from "../components/HeroSection.jsx";
 import TrendingSection from "../components/TrendingSection";
+import AllMoviesSection from "../components/AllMoviesSection";
 
 // API
 const API_BASE_URL = "https://api.themoviedb.org/3";
@@ -109,21 +110,11 @@ const App = () => {
                         trendingError={trendingError}
                     />
 
-                    <section id="all-movies" className="all-movies">
-                        <h2>All Movies</h2>
-
-                        {isLoading ? (
-                            <Spinner />
-                        ) : errorMessage ? (
-                            <p className="text-red-500">{errorMessage}</p>
-                        ) : (
-                            <ul>
-                                {movieList.map((movie) => (
-                                    <MovieCard key={movie.id} movie={movie} />
-                                ))}
-                            </ul>
-                        )}
-                    </section>
+                    <AllMoviesSection
+                        movieList={movieList}
+                        isLoading={isLoading}
+                        errorMessage={errorMessage}
+                    />
 
                     <h1 className="text-white">{searchTerm}</h1>
                 </div>
