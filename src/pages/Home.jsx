@@ -1,4 +1,3 @@
-import Search from "../components/Search.jsx";
 import { useEffect, useState } from "react"; // Remove `use`—it's not a valid hook
 import Spinner from "../components/Spinner.jsx";
 import MovieCard from "../components/MovieCard.jsx";
@@ -6,6 +5,7 @@ import { useDebounce } from "react-use";
 import { getTrendingMovies, updateSearchCount } from "../appwrite.js";
 import Navbar from "../components/Navbar";
 import HeroSection from "../components/HeroSection.jsx";
+import TrendingSection from "../components/TrendingSection";
 
 // API
 const API_BASE_URL = "https://api.themoviedb.org/3";
@@ -103,28 +103,11 @@ const App = () => {
                         setSearchTerm={setSearchTerm}
                     />
 
-                    {isTrendingLoading ? (
-                        <Spinner />
-                    ) : trendingError ? (
-                        <p className="text-red-500">{trendingError}</p>
-                    ) : (
-                        trendingMovies.length > 0 && (
-                            <section id="trending" className="trending">
-                                <h2>Trending Movies</h2>
-                                <ul>
-                                    {trendingMovies.map((movie, index) => (
-                                        <li key={movie.$id}>
-                                            <p>{index + 1}</p>
-                                            <img
-                                                src={movie.poster_url}
-                                                alt={movie.title}
-                                            />
-                                        </li>
-                                    ))}
-                                </ul>
-                            </section>
-                        )
-                    )}
+                    <TrendingSection
+                        trendingMovies={trendingMovies}
+                        isTrendingLoading={isTrendingLoading}
+                        trendingError={trendingError}
+                    />
 
                     <section id="all-movies" className="all-movies">
                         <h2>All Movies</h2>
