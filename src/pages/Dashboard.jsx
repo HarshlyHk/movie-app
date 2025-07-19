@@ -1,8 +1,10 @@
+import MainLayout from "../layouts/MainLayout";
+
 const Dashboard = () => {
     return (
-        <div className="min-h-screen flex items-center justify-center">
-            <h1 className="text-3xl font-bold">Dashboard Page</h1>
-        </div>
+        <MainLayout>
+            <h1 className="text-3xl font-bold text-teal-300">Dashboard</h1>
+        </MainLayout>
     );
 };
 
