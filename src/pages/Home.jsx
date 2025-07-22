@@ -1,16 +1,16 @@
-import { useEffect, useState } from "react"; // Remove `use`—it's not a valid hook
-import Spinner from "../components/Spinner.jsx";
-import MovieCard from "../components/MovieCard.jsx";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import { scroller } from "react-scroll";
 import { useDebounce } from "react-use";
-import { getTrendingMovies, updateSearchCount } from "../appwrite.js";
+
 import Navbar from "../components/Navbar";
 import HeroSection from "../components/HeroSection.jsx";
 import TrendingSection from "../components/TrendingSection";
 import AllMoviesSection from "../components/AllMoviesSection";
+import { getTrendingMovies, updateSearchCount } from "../appwrite.js";
 
-// API
+// API config
 const API_BASE_URL = "https://api.themoviedb.org/3";
-
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
 const API_OPTIONS = {
@@ -21,73 +21,92 @@ const API_OPTIONS = {
     },
 };
 
-const App = () => {
-    const [debounceSearchTerm, setDebounceSearchTerm] = useState("");
+const Home = () => {
+    const location = useLocation();
+
     const [searchTerm, setSearchTerm] = useState("");
+    const [debounceSearchTerm, setDebounceSearchTerm] = useState("");
+
     const [movieList, setMovieList] = useState([]);
     const [errorMessage, setErrorMessage] = useState("");
     const [isLoading, setIsLoading] = useState(false);
+
     const [trendingMovies, setTrendingMovies] = useState([]);
     const [isTrendingLoading, setIsTrendingLoading] = useState(false);
     const [trendingError, setTrendingError] = useState("");
 
+    // Debounced search input
     useDebounce(() => setDebounceSearchTerm(searchTerm), 500, [searchTerm]);
 
-    const fetchMovies = async (query = "") => {
-        setIsLoading(true);
-        setErrorMessage("");
-        try {
-            const endpoint = query
-                ? `${API_BASE_URL}/search/movie?query=${encodeURIComponent(
-                      query
-                  )}`
-                : `${API_BASE_URL}/discover/movie?sort_by=popularity.desc`;
-
-            const response = await fetch(endpoint, API_OPTIONS);
-
-            if (!response.ok) {
-                throw new Error("Failed to fetch movies");
-            }
-
-            const data = await response.json();
-
-            if (data.Response === "False") {
-                setErrorMessage(data.Error || "failed to fetch movies");
-                setMovieList([]);
-                return;
-            }
-            setMovieList(data.results || []);
-
-            if (query && data.results.length > 0) {
-                await updateSearchCount(query, data.results[0]);
-            }
-        } catch (error) {
-            console.error(`Error fetching movies:, ${error}`);
-            setErrorMessage("Error fetching movies. Please try again later.");
-        } finally {
-            setIsLoading(false);
-        }
-    };
-
-    const loadTrendingMovies = async () => {
-        setIsTrendingLoading(true);
-        setTrendingError("");
-        try {
-            const movies = await getTrendingMovies();
-            setTrendingMovies(movies);
-        } catch (error) {
-            console.error(`Error fetching trending movies: ${error}`);
-            setTrendingError("Failed to load trending movies.");
-        } finally {
-            setIsTrendingLoading(false);
-        }
-    };
-
+    // Trigger scroll when navigated to `/` with a scroll target
     useEffect(() => {
+        if (location.state?.scrollTarget) {
+            scroller.scrollTo(location.state.scrollTarget, {
+                smooth: true,
+                offset: -70,
+                duration: 500,
+            });
+        }
+    }, [location]);
+
+    // Search movie API
+    useEffect(() => {
+        const fetchMovies = async (query = "") => {
+            setIsLoading(true);
+            setErrorMessage("");
+
+            try {
+                const endpoint = query
+                    ? `${API_BASE_URL}/search/movie?query=${encodeURIComponent(
+                          query
+                      )}`
+                    : `${API_BASE_URL}/discover/movie?sort_by=popularity.desc`;
+
+                const response = await fetch(endpoint, API_OPTIONS);
+                if (!response.ok) throw new Error("Failed to fetch movies");
+
+                const data = await response.json();
+
+                if (data.Response === "False") {
+                    setErrorMessage(data.Error || "No results.");
+                    setMovieList([]);
+                    return;
+                }
+
+                setMovieList(data.results || []);
+
+                if (query && data.results.length > 0) {
+                    await updateSearchCount(query, data.results[0]);
+                }
+            } catch (error) {
+                console.error("Error fetching movies:", error);
+                setErrorMessage(
+                    "Error fetching movies. Please try again later."
+                );
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
         fetchMovies(debounceSearchTerm);
     }, [debounceSearchTerm]);
 
+    // Load trending
     useEffect(() => {
+        const loadTrendingMovies = async () => {
+            setIsTrendingLoading(true);
+            setTrendingError("");
+            try {
+                const movies = await getTrendingMovies();
+                setTrendingMovies(movies);
+            } catch (error) {
+                console.error("Error fetching trending movies:", error);
+                setTrendingError("Failed to load trending movies.");
+            } finally {
+                setIsTrendingLoading(false);
+            }
+        };
+
         loadTrendingMovies();
     }, []);
 
@@ -97,7 +116,6 @@ const App = () => {
 
             <main>
                 <div className="pattern" />
-
                 <div className="wrapper">
                     <HeroSection
                         searchTerm={searchTerm}
@@ -123,4 +141,4 @@ const App = () => {
     );
 };
 
-export default App;
+export default Home;

@@ -1,52 +1,89 @@
-import { Link } from "react-scroll";
+import { useState, useEffect } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import useScrollDirection from "../hooks/useScrollDirection";
 
 const Navbar = () => {
     const scrollDirection = useScrollDirection();
+    const { pathname } = useLocation();
+    const isHome = pathname === "/";
 
     return (
         <nav
-            className={`w-full bg-black/60 backdrop-blur-md text-white px-6 py-4 fixed top-0 left-0 z-50 shadow-md transition-transform duration-300 ${
-                scrollDirection === "down"
-                    ? "-translate-y-full"
-                    : "translate-y-0"
-            }`}
+            className={`
+                fixed top-0 left-0 right-0 z-50
+                bg-white/80 backdrop-blur-md
+                transition-transform duration-300
+                ${
+                    scrollDirection === "down"
+                        ? "-translate-y-full"
+                        : "translate-y-0"
+                }
+                border-b border-gray-200
+            `}
         >
-            <ul className="flex justify-center space-x-6 text-sm font-medium">
-                <li>
-                    <Link
-                        to="header"
-                        smooth={true}
-                        offset={-70}
-                        duration={500}
-                        className="cursor-pointer hover:text-yellow-400 transition"
-                    >
-                        Home
-                    </Link>
-                </li>
-                <li>
-                    <Link
-                        to="trending"
-                        smooth={true}
-                        offset={-70}
-                        duration={500}
-                        className="cursor-pointer hover:text-yellow-400 transition"
-                    >
-                        Trending
-                    </Link>
-                </li>
-                <li>
-                    <Link
-                        to="all-movies"
-                        smooth={true}
-                        offset={-70}
-                        duration={500}
-                        className="cursor-pointer hover:text-yellow-400 transition"
-                    >
-                        All Movies
-                    </Link>
-                </li>
-            </ul>
+            <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
+                <Link to="/" className="text-xl font-bold text-gray-800">
+                    MyApp
+                </Link>
+
+                <div className="flex space-x-6">
+                    {isHome ? (
+                        <>
+                            <a
+                                href="#home"
+                                className="text-gray-700 hover:text-gray-900 transition"
+                            >
+                                Home
+                            </a>
+                            <a
+                                href="#trending"
+                                className="text-gray-700 hover:text-gray-900 transition"
+                            >
+                                Trending
+                            </a>
+                            <a
+                                href="#all-movies"
+                                className="text-gray-700 hover:text-gray-900 transition"
+                            >
+                                All Movies
+                            </a>
+                        </>
+                    ) : (
+                        <>
+                            <NavLink
+                                to="/dashboard"
+                                className={({ isActive }) =>
+                                    `text-gray-700 hover:text-gray-900 transition ${
+                                        isActive
+                                            ? "font-semibold underline"
+                                            : ""
+                                    }`
+                                }
+                            >
+                                Dashboard
+                            </NavLink>
+                            <NavLink
+                                to="/settings/general"
+                                className={({ isActive }) =>
+                                    `text-gray-700 hover:text-gray-900 transition ${
+                                        isActive
+                                            ? "font-semibold underline"
+                                            : ""
+                                    }`
+                                }
+                            >
+                                Settings
+                            </NavLink>
+                            <NavLink
+                                to="/"
+                                className="text-gray-700 hover:text-gray-900 transition"
+                            >
+                                Home
+                            </NavLink>
+                        </>
+                    )}
+                </div>
+            </div>
         </nav>
     );
 };
