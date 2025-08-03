@@ -1,4 +1,6 @@
 import { useState } from "react";
+// 1. Import the icon
+import { BsBoxArrowUpRight } from "react-icons/bs";
 
 const MovieCard = ({
     movie: {
@@ -122,6 +124,8 @@ const MovieCard = ({
                                         <span className="text-white">
                                             {provider.provider_name}
                                         </span>
+                                        {/* 2. Added  the icon here! ✨ */}
+                                        <BsBoxArrowUpRight className="text-white text-xs ml-1" />
                                     </a>
                                 </li>
                             ))}
