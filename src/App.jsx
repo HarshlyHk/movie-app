@@ -1,3 +1,5 @@
+// src/App.jsx
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import RootLayout from "./layouts/RootLayout";
 import MainLayout from "./layouts/MainLayout";
@@ -13,19 +15,12 @@ function App() {
     return (
         <BrowserRouter>
             <Routes>
-                {/* Header always rendered by RootLayout */}
+                {/* RootLayout provides the Navbar to all routes */}
                 <Route element={<RootLayout />}>
-                    {/* Home */}
-                    <Route
-                        index
-                        element={
-                            <MainLayout>
-                                <Home />
-                            </MainLayout>
-                        }
-                    />
+                    {/* CORRECTED: Home route should NOT use MainLayout */}
+                    <Route index element={<Home />} />
 
-                    {/* Dashboard — now uses MainLayout (no sidebar) */}
+                    {/* Dashboard route correctly uses MainLayout for centering */}
                     <Route
                         path="dashboard"
                         element={
@@ -35,7 +30,7 @@ function App() {
                         }
                     />
 
-                    {/* Settings — keeps its own sidebar via SettingsLayout */}
+                    {/* Settings route correctly uses its own layout */}
                     <Route path="settings/*" element={<SettingsLayout />}>
                         <Route index element={<GeneralSettings />} />
                         <Route path="general" element={<GeneralSettings />} />

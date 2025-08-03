@@ -27,6 +27,32 @@
         background: #030014;
     }
 
+    /* Add these styles for the scrollbar */
+    /* For Webkit browsers (Chrome, Safari, Edge) */
+    ::-webkit-scrollbar {
+        width: 8px; /* Width of the scrollbar */
+    }
+
+    ::-webkit-scrollbar-track {
+        background: transparent; /* Make the track transparent */
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: #a8b5db; /* Your --color-light-200 */
+        border-radius: 10px; /* Rounded corners for the thumb */
+        border: 2px solid #030014; /* Padding around thumb, using your primary bg */
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background-color: #cecefb; /* Your --color-light-100 on hover */
+    }
+
+    /* For Firefox */
+    html {
+        scrollbar-width: thin;
+        scrollbar-color: #a8b5db #030014; /* thumb and track color */
+    }
+
     h1 {
         @apply mx-auto max-w-4xl text-center text-5xl font-bold leading-tight tracking-[-1%] text-white sm:text-[64px] sm:leading-[76px];
     }
@@ -54,7 +80,7 @@
     }
 
     .wrapper {
-        @apply px-5 py-12 xs:p-10 max-w-7xl mx-auto flex flex-col relative z-10;
+        @apply py-12 xs:py-10 max-w-7xl mx-auto flex flex-col relative z-10;
     }
 
     .trending {
