@@ -7,6 +7,8 @@ import SettingsLayout from "./layouts/SettingsLayout";
 
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
+import AllMoviesPage from "./pages/AllMoviesPage"; // Import the new page
+import TrendingPage from "./pages/TrendingPage"; // Import the new page
 import GeneralSettings from "./pages/settings/GeneralSettings";
 import AppearanceSettings from "./pages/settings/AppearanceSettings";
 import DataUsageSettings from "./pages/settings/DataUsageSettings";
@@ -17,10 +19,30 @@ function App() {
             <Routes>
                 {/* RootLayout provides the Navbar to all routes */}
                 <Route element={<RootLayout />}>
-                    {/* CORRECTED: Home route should NOT use MainLayout */}
+                    {/* Home page (now simpler) */}
                     <Route index element={<Home />} />
 
-                    {/* Dashboard route correctly uses MainLayout for centering */}
+                    {/* New dedicated page for All Movies & Search */}
+                    <Route
+                        path="all-movies"
+                        element={
+                            <MainLayout>
+                                <AllMoviesPage />
+                            </MainLayout>
+                        }
+                    />
+
+                    {/* New dedicated page for Trending Movies */}
+                    <Route
+                        path="trending"
+                        element={
+                            <MainLayout>
+                                <TrendingPage />
+                            </MainLayout>
+                        }
+                    />
+
+                    {/* Dashboard route */}
                     <Route
                         path="dashboard"
                         element={
@@ -30,8 +52,8 @@ function App() {
                         }
                     />
 
-                    {/* Settings route correctly uses its own layout */}
-                    <Route path="settings/*" element={<SettingsLayout />}>
+                    {/* Settings route with its own layout */}
+                    <Route path="settings" element={<SettingsLayout />}>
                         <Route index element={<GeneralSettings />} />
                         <Route path="general" element={<GeneralSettings />} />
                         <Route

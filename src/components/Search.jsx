@@ -1,10 +1,18 @@
-import React from "react";
+// src/components/Search.jsx
 
-const Search = ({ searchTerm, setSearchTerm }) => {
+const Search = ({ searchTerm, setSearchTerm, onSearchSubmit }) => {
+    const handleSubmit = (e) => {
+        e.preventDefault(); // Prevent the page from reloading
+        if (onSearchSubmit) {
+            onSearchSubmit(searchTerm);
+        }
+    };
+
     return (
-        <div className="search">
+        // Wrap input in a form to handle submission
+        <form className="search" onSubmit={handleSubmit}>
             <div>
-                <img src="search.svg" alt="Search" />
+                <img src="/search.svg" alt="Search" />
                 <input
                     type="text"
                     placeholder="Search for a movie"
@@ -12,7 +20,7 @@ const Search = ({ searchTerm, setSearchTerm }) => {
                     onChange={(e) => setSearchTerm(e.target.value)}
                 />
             </div>
-        </div>
+        </form>
     );
 };
 
