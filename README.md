@@ -6,8 +6,7 @@ A sleek and responsive movie browsing web app built using React and Tailwind CSS
 
 ## 🚀 Live Demo
 
-🔗 **Coming soon...**  
-(_Will be deployed on Vercel or Netlify_)
+🔗 **[View Live Demo](https://gorgeous-cat-ed44dc.netlify.app/)**
 
 ---
 
